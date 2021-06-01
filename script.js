@@ -22,59 +22,75 @@ function computerPlay(){
 
 //plays a single round of Rock Paper Scissors
 function playRound(playerSelection, computerSelection){    
-    let prompt;
+    let message;
 
     switch (playerSelection.toLowerCase()){
         case "rock":
 
             if (computerSelection === "rock"){
-                prompt = "It's a draw! You both chose Rock";
+                message = "It's a draw! You both chose Rock";
             }
 
             else if (computerSelection === "paper"){
-                prompt = "You lose! Paper beats Rock";
+                message = "You lose! Paper beats Rock";
+                compWins++;
             }
 
             else {
-                prompt = "You win! Rock beats Scissors";
+                message = "You win! Rock beats Scissors";
+                playerWins++;
             }
             break;
         
         case "paper":
 
             if (computerSelection === "rock"){
-                prompt = "You win! Paper beats Rock";
+                message = "You win! Paper beats Rock";
+                playerWins++;
             }
     
             else if (computerSelection === "paper"){
-                prompt = "It's a draw! You both chose paper";
+                message = "It's a draw! You both chose paper";
             }
     
             else {
-                prompt = "You lose! Scissors beats Paper";
+                message = "You lose! Scissors beats Paper";
+                compWins++;
             }
             break;
 
         case "scissors":
 
             if (computerSelection === "rock"){
-                prompt = "You lose! Rock beats Scissors";
+                message = "You lose! Rock beats Scissors";
+                compWins++;
             }
 
             else if (computerSelection === "paper"){
-                prompt = "You win! Scissors beats Paper";
+                message = "You win! Scissors beats Paper";
+                playerWins++;
             }
 
             else {
-                prompt = "It's a draw! You both chose Scissors";
+                message = "It's a draw! You both chose Scissors";
             }
             break;
     }
-    return prompt;
+    return message;
 }
 
-const playerSelection = "ROCK";
-const computerSelection = computerPlay();
+function game(){
+    let playerChoice;
+    for (i = 0; i < 5; i++){
+        playerChoice = prompt("Enter Rock, Paper, or Scissors:")
+        console.log(playRound(playerChoice, computerPlay()));
+        console.log(`Round ${i+1}\nPlayer: ${playerWins} Computer: ${compWins}`);
+    }
+}
 
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection)); //This line reports undefined
+//Wins counter
+let playerWins = 0;
+let compWins = 0;
+
+//Starts game
+game();
