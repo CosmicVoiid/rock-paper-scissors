@@ -28,16 +28,16 @@ function playRound(playerSelection, computerSelection){
         case "rock":
 
             if (computerSelection === "rock"){
-                message = "It's a draw! You both chose Rock";
+                message = "You both chose Rock";
             }
 
             else if (computerSelection === "paper"){
-                message = "You lose! Paper beats Rock";
+                message = "Paper beats Rock";
                 compWins++;
             }
 
             else {
-                message = "You win! Rock beats Scissors";
+                message = "Rock beats Scissors";
                 playerWins++;
             }
             break;
@@ -45,16 +45,16 @@ function playRound(playerSelection, computerSelection){
         case "paper":
 
             if (computerSelection === "rock"){
-                message = "You win! Paper beats Rock";
+                message = "Paper beats Rock";
                 playerWins++;
             }
     
             else if (computerSelection === "paper"){
-                message = "It's a draw! You both chose paper";
+                message = "You both chose paper";
             }
     
             else {
-                message = "You lose! Scissors beats Paper";
+                message = "Scissors beats Paper";
                 compWins++;
             }
             break;
@@ -62,17 +62,17 @@ function playRound(playerSelection, computerSelection){
         case "scissors":
 
             if (computerSelection === "rock"){
-                message = "You lose! Rock beats Scissors";
+                message = "Rock beats Scissors";
                 compWins++;
             }
 
             else if (computerSelection === "paper"){
-                message = "You win! Scissors beats Paper";
+                message = "Scissors beats Paper";
                 playerWins++;
             }
 
             else {
-                message = "It's a draw! You both chose Scissors";
+                message = "You both chose Scissors";
             }
             break;
     }
@@ -86,9 +86,21 @@ function game(){
         console.log(playRound(playerChoice, computerPlay()));
         console.log(`Round ${i+1}\nPlayer: ${playerWins} Computer: ${compWins}`);
     }
+    winDisplay();
 }
 
-//Wins counter
+function winDisplay(){
+    if (playerWins === compWins){
+        console.log("It's a draw!")
+    }
+
+    else {
+        playerWins > compWins ? console.log("You win!") : console.log("You lose!");
+    }
+}
+
+
+//Wins counter initilzation
 let playerWins = 0;
 let compWins = 0;
 
